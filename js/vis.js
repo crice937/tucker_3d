@@ -34,32 +34,70 @@
         visualVariables: [{
           type: "size",
           field: "Pct_Pop_wHealth_Ins",
-          normalizationField: "Total_Population",
+          //normalizationField: "Total_Population",
           stops: [
           {
-            value: 0.10,
-            size: 10000,
-            label: "<10%"
+            value: 70,
+            size: 1000,
+            label: "<70%"
           },
           {
-            value: 0.50,
-            size: 500000,
-            label: ">50%"
+            value: 75,
+            size: 2000,
+            label: ">75%"
+          },
+          {
+            value: 80,
+            size: 3000,
+            label: ">80%"
+          },
+          {
+            value: 85,
+            size: 4000,
+            label: ">85%"
+          },          {
+            value: 90,
+            size: 5000,
+            label: ">90%"
+          },          {
+            value: 95,
+            size: 6000,
+            label: ">95%"
           }]
         }, {
           type: "color",
           field: "Pct_Pop_wHealth_Ins",
-          normalizationField: "Total_Population",
+          //normalizationField: "Total_Population",
           stops: [
           {
-            value: 0.10,
-            color: "#FFFCD4",
-            label: "<15%"
+            value: 70,
+            color: "#edf8e9",
+            label: "<70%"
           },
           {
-            value: 0.35,
-            color: [153, 83, 41],
-            label: ">35%"
+            value: 75,
+            color: "#c7e9c0",
+            label: ">75%"
+          },
+          {
+            value: 80,
+            color: "#a1d99b",
+            label: ">80%"
+          },
+          {
+            value: 85,
+            color: "#74c476",
+            label: ">85%"
+          },
+          {
+            value: 90,
+            color: "#31a354",
+            label: ">90%"
+          },
+          {
+            value: 95,
+            color: "#006d2c",
+            label: ">95%"
           }]
         }]
       });
@@ -69,8 +107,8 @@
         renderer: renderer,
         outFields: ["*"],
         popupTemplate: {
-          title: "{PLNG_REGIO}",
-          content: "{Pct_Pop_wHealth_Ins} of {Total_Population} have some variety of health coverage.",
+          title: "Census Tract {NAME10}",
+          content: "{Pct_Pop_wHealth_Ins}% of {Total_Population} have some variety of health coverage.",
           fieldInfos: [
           {
             fieldName: "Pct_Pop_wHealth_Ins",
@@ -85,8 +123,7 @@
               places: 0
             }
           }]
-        },
-        definitionExpression: defExp.join(" OR ") // only display counties from states in defExp
+        }
       });
 
        var map = new Map({
